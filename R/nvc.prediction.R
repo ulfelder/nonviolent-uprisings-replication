@@ -2,9 +2,8 @@
 # Jay Ulfelder
 # 2015-01-05
 
-# Housekeeping: clear workspace and set working directory
+# Clear workspace.
 rm(list=ls(all=TRUE))
-setwd("c:/users/jay/documents/nonviolent uprisings/replication/")
 
 # Load required packages
 library(verification)
