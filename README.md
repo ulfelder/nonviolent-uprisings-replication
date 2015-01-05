@@ -1,4 +1,4 @@
-This repository contains replication materials for Erica Chenoweth and Jay Ulfelder, "Can Structural Conditions Explain the Onset of Nonviolent Uprisings?" Please direct questions or suggestions to Jay at ulfelder at gmail dot com.
+This repository contains replication materials for Erica Chenoweth and Jay Ulfelder, "Can Structural Conditions Explain the Onset of Nonviolent Uprisings?" Please direct questions or suggestions to ulfelder at gmail dot com.
 
 The replication materials comprise three R scripts and two data sets.
 
