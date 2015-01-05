@@ -2,9 +2,8 @@
 # Jay Ulfelder
 # 2015-01-05
 
-# Housekeeping: clear workspace and set working directory
+# Clear workspace.
 rm(list=ls(all=TRUE))
-setwd("c:/users/jay/documents/nonviolent uprisings/replication/")
 
 # Load required packages
 library(caret)
@@ -16,7 +15,7 @@ library(scoring)
 library(DataCombine)
 
 # Load full country-year data set with transformations but no listwise deletion
-mash <- read.table("data/nvc.tranformed.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+mash <- read.table("data/nvc.transformed.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
 
 # Load replication data set with folds for cross-validation and listwise deletion already done
 valdat <- read.table("data/valdat.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
