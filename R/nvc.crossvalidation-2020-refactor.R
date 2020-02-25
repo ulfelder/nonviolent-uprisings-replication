@@ -108,25 +108,18 @@ list_formulae <- list(base = base.f, gripes = gripes.f, modnzn = modnzn.f, rscmo
 cv_results <- cv_predit(model_list = list_formulae)
 
 # Summarize accuracy of each model by iteration
-a cc.by.iter <- cv_results %>%
+acc.by.iter <- cv_results %>%
     group_by(iteration, model) %>%
     summarise(brier = f_brier(nvc.start.1, pred), log = f_log(nvc.start.1, pred), auc = f_auc(nvc.start.1, pred))
 
 # Summarize overall accuracy of each model
-# NOTE: Technically, this should have been done using the output of the previous chunk, just
-# averaging stats across the summaries for the five iterations instead of pooling, like...
-# 
-#    acc.by.iter %>% 
-#        ungroup() %>%
-#        group_by(model) %>%
-#        summarise_at(vars(brier, log, auc), mean) 
-#
-# To ensure replication of the original results, however, I am leaving the code as is. The 
-# results are all within 0.001 of the reported ones, so this has no effect on the conclusions
-# drawn in the original paper.
-acc.overall <- cv_results %>%
+# NOTE: Original version did this with results pooled by model. The correct approach is to average the stats
+# for each model across all iterations of k-fold cv, which is what's done here. There results are virtually
+# identical, but I'm a stickler, so...
+acc.overall <- acc.by.iter %>% 
+    ungroup() %>%
     group_by(model) %>%
-    summarise(brier = f_brier(nvc.start.1, pred), log = f_log(nvc.start.1, pred), auc = f_auc(nvc.start.1, pred))
+    summarise_at(vars(brier, log, auc), mean) 
 
 # Summarize accuracy by model by year
 acc.by.year <- cv_results %>%
